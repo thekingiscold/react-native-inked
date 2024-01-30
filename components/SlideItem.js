@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, Image, ImageBackground, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, Dimensions, Pressable } from 'react-native'
 import React from 'react'
 
 const {width, height} = Dimensions.get('screen')
 
-const SlideItem = ({item}) => {
+const SlideItem = ({item, titleFlex, textFlex, buttonFlex, handleButtonPress}) => {
 
 
   // let [fontsLoaded] = useFonts({
@@ -13,16 +13,26 @@ const SlideItem = ({item}) => {
   return (
     <>
      <View style={styles.container}>
-      <ImageBackground source={item} style={styles.image}>
+      <ImageBackground source={item.image} style={styles.image}>
         <View style={styles.overlay}>
-            <View style={[styles.nestedBox, { flex: 0.7 }]}>
-              {/* keep this */}
-            </View>
-            <View style={[styles.nestedBox, { flex: 0.3 }]}>
-              <Text style={styles.text}>
+            <View style={[styles.title, { flex: titleFlex }]}>
+              <Text style={styles.titleText}>
                 <Text style={styles.regularText}>Inke</Text>
                 <Text style={styles.redText}>d</Text>
               </Text>
+            </View>
+            <View style={[styles.secondaryText, { flex: textFlex }]}>
+              <Text style={styles.tagtext}>
+                {item.text}
+              </Text>
+            </View>
+            <View style={[styles.touchableContainer, { flex: buttonFlex }]}>
+              <Pressable
+              style={styles.customButton}
+              onPress={() => handleButtonPress()}
+              >
+                <Text style={styles.buttonText}>Sign In</Text>
+              </Pressable>
             </View>
         </View>
       </ImageBackground>
@@ -48,29 +58,55 @@ const styles = StyleSheet.create({
     flexDirection: 'column', 
     margin: 40
   },
-  nestedBox: {
-    // borderWidth: 1,
-    // borderColor: 'white',
-    // marginBottom: 10,
+  title: {
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+  secondaryText: {
+    marginBottom: 10,
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    justifyContent: 'center',
+  },
+  touchableContainer: {
+    borderWidth: 2,
+    borderColor: 'red',
+    borderRadius: 50,
+    marginBottom: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 0.4
+    backgroundColor: 'black',
   },
-  text: {
-    
+  titleText: {
     color: 'white',
     fontSize: 50,
-    fontWeight: 'bold',
+    fontWeight: '900',
     textAlign: 'center',
-    letterSpacing: 2
+    letterSpacing: 3
+  },
+
+  tagtext: {
+    color: 'white',
+    fontSize: 25,
+    fontWeight: '800',
+    textAlign: 'center',
+    letterSpacing: 3,
+    
+    borderRadius: 4,
   },
   regularText: {
     color: 'white',
-    
-    // fontFamily: 'Montserrat_600SemiBold',
   },
   redText: {
     color: 'red',
-    // fontFamily: 'Montserrat_600SemiBold',
+  },
+  customButton: {
+    backgroundColor: 'black',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 })
