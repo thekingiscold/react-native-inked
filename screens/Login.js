@@ -11,11 +11,13 @@ const Login = () => {
   const instaIcon = require("../assets/insta_signup_icon.png")
   const pinterestIcon = require("../assets/Pinterest-logo.png")
 
+  const imageBackground = require("../assets/matte-black-bg.jpg")
+
   const [email, onChangeEmail] = useState('')
   const [password, onChangePassword] = useState('')
 
   return (
-    <View style={styles.container}>
+    <ImageBackground source={imageBackground} style={styles.container}>
       <View style={styles.titleContainer} >
         <Title fontSize={60} textAlign="center"/>
       </View>
@@ -86,7 +88,7 @@ const Login = () => {
           <Text style={{color: 'white', margin: 12, fontSize: 15, fontWeight: 700}}>Don't have an account? Create <Text onPress={console.log('pressed')} style={{color: 'red'}}>Here</Text></Text>
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
