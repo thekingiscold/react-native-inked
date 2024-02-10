@@ -18,7 +18,7 @@ const WelcomeScreen = () => {
 
     return (
         <View style={{ flex: 1 }}>
-        <Slider imagesWithTitleAndText={imagesWithTitleAndText} titleFlex={0.7} textFlex={0.2} buttonFlex={0.1} handleButtonPress={buttonPressed} timer={4000}/>
+        <Slider imagesWithTitleAndText={imagesWithTitleAndText} titleFlex={0.7} textFlex={0.2} buttonFlex={0.1} handleButtonPress={buttonPressed} timer={3000}/>
         </View>
     );
 };

@@ -2,6 +2,10 @@
 import React, { useState } from 'react';
 import { View, Image,Text, StyleSheet, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import Title from '../components/Title';
+import { useNavigation } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+
+
 
 const Login = () => {
 
@@ -13,8 +17,14 @@ const Login = () => {
 
   const imageBackground = require("../assets/matte-black-bg.jpg")
 
+  const navigation = useNavigation();
+
   const [email, onChangeEmail] = useState('')
   const [password, onChangePassword] = useState('')
+
+  const buttonPressed = () => {
+    navigation.navigate('Home');
+  };
 
   return (
     <ImageBackground source={imageBackground} style={styles.container}>
@@ -61,7 +71,7 @@ const Login = () => {
         <TouchableOpacity>
           <Text style={{color: 'white', fontWeight: 500, fontSize: 12, margin: 10}}>Forget password ?</Text>  
         </TouchableOpacity>
-        <TouchableOpacity style={{flex: 0.20, backgroundColor: 'white', borderRadius: 25, justifyContent: 'center', margin: 10}}>
+        <TouchableOpacity onPress={() => buttonPressed()} style={{flex: 0.20, backgroundColor: 'white', borderRadius: 25, justifyContent: 'center', margin: 10}}>
           <Text style={{color: 'black', fontWeight: 900, fontSize: 20, textAlign: 'center'}}>Login</Text>
         </TouchableOpacity>
       </View>
